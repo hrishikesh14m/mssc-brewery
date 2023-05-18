@@ -2,7 +2,6 @@ package com.brewery.web.controller;
 
 import com.brewery.web.model.BeerDto;
 import com.brewery.web.services.BeerService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -37,6 +36,23 @@ public class BeerController {
         headers.add("Location","api/v1/beer/"+savedBeerDto.getId().toString());
         return  new ResponseEntity(headers,HttpStatus.CREATED);
 
+    }
+
+    @PutMapping("/{beerId}")
+    public ResponseEntity handlePost(@PathVariable("beerId") UUID id,
+                                     @RequestBody BeerDto beerDto){
+
+
+      BeerDto updatedBeerDto= beerService.updateBeer(id,beerDto);
+
+      return new ResponseEntity(updatedBeerDto,HttpStatus.NO_CONTENT);
+    }
+
+
+    @DeleteMapping("/{beerId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void handleDelete(@PathVariable("beerId")UUID id){
+       beerService.deleteBeer(id);
     }
 
 }
