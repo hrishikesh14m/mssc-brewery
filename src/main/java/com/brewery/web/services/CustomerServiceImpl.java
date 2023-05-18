@@ -22,20 +22,13 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-<<<<<<< Updated upstream
-    @ResponseStatus
-=======
     @ResponseStatus(HttpStatus.NO_CONTENT)
->>>>>>> Stashed changes
     public void updateCustomer(UUID id, CustomerDto customerDto) {
         //todo implementation
     }
 
     @Override
-<<<<<<< Updated upstream
-=======
     @ResponseStatus(HttpStatus.NO_CONTENT)
->>>>>>> Stashed changes
     public void deleteCustomer(UUID id) {
         //todo implementation
     }
